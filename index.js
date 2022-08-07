@@ -16,7 +16,7 @@ function getPlayerChoice() {
     return prompt("Choose Rock, Paper or Scissors");
 }
 
-function rockPaperScissorsShoot(){
+function playRound(playerSelection,computerSelection){
     if (playerSelection == "ROCK" && computerSelection == "SCISSORS"){
         return "You Win! Rock beats Scissors";
     } else if (playerSelection == "PAPER" && computerSelection == "ROCK"){
@@ -26,15 +26,17 @@ function rockPaperScissorsShoot(){
     } else if (playerSelection == computerSelection) {
         return `Draw ${playerSelection}`;
     } else {
-        return "You lose";
+        return "You lose!";
     }
-
-
-    
 }
 
-let computerSelection = getComputerChoice();
+function game(){
+    for(let i=0;i<5;i++){
+        let computerSelection = getComputerChoice();
+        let playerSelection = getPlayerChoice().toUpperCase();
+        let result = playRound(playerSelection,computerSelection);
+        console.log(result);
+    }
+}
 
-let playerSelection = getPlayerChoice().toUpperCase();
-
-console.log(rockPaperScissorsShoot(computerSelection,playerSelection));
+game();
