@@ -23,20 +23,37 @@ function playRound(playerSelection,computerSelection){
         return "You Win! Paper beats Rock";
     } else if (playerSelection == "SCISSORS" && computerSelection == "PAPER"){
         return "You Win! Scissors beats paper";
+    } else if (computerSelection == "ROCK" && playerSelection == "SCISSORS"){
+        return "You Lose! Rock beats Scissors";
+    } else if (computerSelection == "PAPER" && playerSelection == "ROCK"){
+        return "You Lose! Paper beats Rock";
+    } else if (computerSelection == "SCISSORS" && playerSelection == "PAPER"){
+        return "You Lose! Scissors beats paper";
     } else if (playerSelection == computerSelection) {
-        return `Draw ${playerSelection}`;
-    } else {
-        return "You lose!";
+        return `Draw you both picked: ${playerSelection}`;
     }
 }
 
 function game(){
+    let gamesWon = 0;
+    let gamesLost = 0;
     for(let i=0;i<5;i++){
         let computerSelection = getComputerChoice();
         let playerSelection = getPlayerChoice().toUpperCase();
         let result = playRound(playerSelection,computerSelection);
-        console.log(result);
+        console.log(`Round result: ${result}`);
+        if(result.includes("Win")){
+            gamesWon++;
+        } else if(result.includes("Lose")){
+            gamesLost++;
+        }
+    }
+    if(gamesWon>gamesLost){
+        return "You won!";
+    } else if(gamesWon<gamesLost){
+        return "You lost!";
+    } else {
+        return "You drew";
     }
 }
-
-game();
+console.log(game());
