@@ -12,5 +12,11 @@ function getComputerChoice() {
     }
 }
 
-getComputerChoice(console.log(getComputerChoice()));
-getComputerChoice(console.log(getComputerChoice()));
+function getPlayerChoice() {
+    return prompt("Choose Rock, Paper or Scissors");
+}
+
+
+let computerSelection = getComputerChoice();
+
+console.log(getPlayerChoice());
